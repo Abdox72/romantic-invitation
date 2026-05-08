@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: var(--cream);
+}
+
+.page-shell {
+  min-height: calc(100vh - 140px);
+  padding-top: 82px;
+  padding-bottom: 84px;
+}

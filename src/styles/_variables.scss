@@ -1,0 +1,11 @@
+.romantic-card {
+  background: var(--primary-beige);
+  border: 1px solid rgba(201, 168, 76, 0.45);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(44, 36, 22, 0.08);
+}
+
+.section-wrap {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
