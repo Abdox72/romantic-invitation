@@ -29,7 +29,7 @@ export class OurStoryComponent {
   readonly entries: TimelineEntry[] = [
     { icon: '🌹', date: 'April 11, 2026', title: 'The Beginning', description: 'Our first date — the day two hearts found each other' },
     { icon: '💍', date: 'May 27, 2026', title: 'The Question', description: 'On the night of May 27th, he asked the most important question' },
-    { icon: '🎉', date: 'May 28, 2026', title: 'Our Engagement Day', description: 'The celebration that made it official — we said yes to forever' },
+    { icon: '🎉', date: 'May 30, 2026', title: 'Our Engagement Day', description: 'The celebration that made it official — we said yes to forever' },
     { icon: '📅', date: 'TBD', title: 'Our Wedding Day', description: 'The best day is still ahead... 💫' }
   ];
 }

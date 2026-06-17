@@ -7,7 +7,7 @@ export class MusicService {
   private readonly audio = new Audio();
 
   // total music files
-  private readonly musicCount = 10;
+  private readonly musicCount = 20;
 
   private currentTrack = '';
 

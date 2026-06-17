@@ -2,14 +2,22 @@ import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CountdownService } from '../../core/services/countdown.service';
 import { HeartsCanvasComponent } from '../../shared/components/hearts-canvas/hearts-canvas.component';
+import { FireworksCanvasComponent } from '../../shared/components/fireworks-canvas/fireworks-canvas.component';
+import { BirthdayBannerComponent } from '../../shared/components/birthday-banner/birthday-banner.component';
 import { CountdownCardComponent } from '../../shared/components/countdown-card/countdown-card.component';
 
 @Component({
   standalone: true,
-  imports: [RouterLink, HeartsCanvasComponent, CountdownCardComponent],
+  imports: [RouterLink, HeartsCanvasComponent, FireworksCanvasComponent, BirthdayBannerComponent, CountdownCardComponent],
   template: `
-    <section class="hero section-wrap">
+    <section class="hero section-wrap" [class.birthday-mode]="countdown.isAnyoneBirthdayToday()">
       <app-hearts-canvas [opacity]="0.22" />
+      @if (countdown.isAnyoneBirthdayToday()) {
+        <app-fireworks-canvas [intensity]="1.5" />
+      }
+      @if (countdown.isAnyoneBirthdayToday()) {
+        <app-birthday-banner />
+      }
       <h2 class="arabic-name">عبدو & هدهد</h2>
 
       <div class="couple-photo-wrapper">
@@ -28,7 +36,7 @@ import { CountdownCardComponent } from '../../shared/components/countdown-card/c
         <app-countdown-card title="Together Since" [value]="together()" />
         <app-countdown-card title="Engaged Since" [value]="engaged()" />
       </div>
-      <p class="note">The night of May 28th changed everything 💍</p>
+      <p class="note">The night of May 30th changed everything 💍</p>
       <div class="nav-links ui-font">
         <a routerLink="/our-story">Our Story</a>
         <a routerLink="/countdowns">Countdowns</a>
@@ -45,6 +53,15 @@ import { CountdownCardComponent } from '../../shared/components/countdown-card/c
       place-items: center;
       text-align: center;
       overflow: hidden;
+    }
+
+    .hero > *:not(app-hearts-canvas):not(app-fireworks-canvas) {
+      position: relative;
+      z-index: 2;
+    }
+
+    .birthday-mode {
+      background: radial-gradient(ellipse at 50% 0%, rgba(255, 248, 238, 0.55), transparent 62%);
     }
 
     .arabic-name {
@@ -110,7 +127,7 @@ import { CountdownCardComponent } from '../../shared/components/countdown-card/c
   `]
 })
 export class HomeComponent {
-  private readonly countdown = inject(CountdownService);
+  readonly countdown = inject(CountdownService);
   readonly together = computed(() => (this.countdown.tick(), this.countdown.countUpFrom(new Date('2026-04-11T00:00:00'))));
-  readonly engaged  = computed(() => (this.countdown.tick(), this.countdown.countUpFrom(new Date('2026-05-27T00:00:00'))));
+  readonly engaged  = computed(() => (this.countdown.tick(), this.countdown.countUpFrom(new Date('2026-05-30T00:00:00'))));
 }
